@@ -55,3 +55,12 @@ model Account {
   @@unique([provider, providerAccountId])
   @@index([userId])
 }
+
+model VerificationToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String
+  expired DateTime
+
+  @@unique([email, token])
+}
